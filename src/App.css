@@ -1,0 +1,25 @@
+body {
+  background-color: rgb(212, 183, 156);
+}
+
+.App {
+  justify-content: center;
+  display: flex;
+  padding-top: 50px;
+  display: flex;
+  flex-direction: column;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  /*'Courier New', Courier, monospace*/
+  /*'Segoe UI', Tahoma, Geneva, Verdana, sans-serif*/
+}
+
+.Title {
+  justify-content: center;
+  display: flex;
+}
+
+.InputBox {
+  justify-content: center;
+  display: flex;
+  padding-bottom: 20px;
+}
