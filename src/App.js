@@ -18,37 +18,45 @@ library.add(faTrash)
 class App extends Component {
   constructor(props){
     super(props);
-    this.state={
+    this.state={ //initial state
       items: [],
       currentItem:{
-        text:'',
-        key:''
+        text:'', //initially empty
+        key:'' //initially empty
       }
     }
-    this.handleItem = this.handleItem.bind(this);
+    //https://www.freecodecamp.org/news/this-is-why-we-need-to-bind-event-handlers-in-class-components-in-react-f7ea1a6f93eb/
+    //https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_objects/Function/bind
+    this.handleItem = this.handleItem.bind(this); //***
     this.addItem = this.addItem.bind(this);
     this.deleteItem = this.deleteItem.bind(this);
     this.setUpdate = this.setUpdate.bind(this);
   }
 
+  //text entered into textbox with unique key (actual date and time)
+  //the text the user is entering gets stored in this obj
   handleItem(e){
     this.setState({
       currentItem:{
-        text: e.target.value,
-        key: Date.now()
+        text: e.target.value, //this is the current item entered in the texbox
+        key: Date.now() //actual date and time as unique key
       }
     })
   }
 
+  //the user can add new items to the existing array obj (above)
+  //the new item is stored in a var so it can be added to the array obj
   addItem(e){
-    e.preventDefault();//the page does not get refreshed
-    const newItem = this.state.currentItem;
-    console.log(newItem);
-    if(newItem.text!=='') { //if newItem.text is not empty 
-      const newItems = [...this.state.items, newItem]; //destructuring assignment
+    e.preventDefault();//default behaviour of a button is that it loads again the page - this is how you can prevent the reload
+    //it is necessary to bind the this value to constructor function 
+    //the this keyword does not point to the class automatically - we need to bind to the constructor
+    const newItem = this.state.currentItem; //***
+    //console.log(newItem);
+    if(newItem.text!=='') { //checking if newItem.text is not empty 
+      const newItems = [...this.state.items, newItem]; //destructuring assignment, adding item to our list
       this.setState({
         items: newItems,
-        currentItem:{
+        currentItem:{ //setting back current item to empty values - kind of an init
           text:'',
           key:''
         }
@@ -80,17 +88,23 @@ class App extends Component {
     return (
       <div className='App'>
         <h1 className='Title'>My Shopping List</h1>
-        <header className='InputBox'>
+        <header className='nowrap tc center pr3'/*'InputBox'*/>{/*keeps button and input in one line*/}
           <form id='shopping-list' onSubmit={this.addItem}>
-            <input type='text' placeholder='enter text' 
+            <input 
+              type='text' 
+              placeholder='Enter item...' 
               value={this.state.currentItem.text}
-              onChange={this.handleItem}/>
+              onChange={this.handleItem}
+            />
             <button type='submit'>Add</button>
           </form>
-        </header> 
-        <ListItems items = {this.state.items}
-        deleteItem={this.deleteItem}
-        setUpdate={this.setUpdate}></ListItems>
+        </header>
+          <div className='nowrap white tc center b pb3'>- - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - -</div>
+          <ListItems 
+            items = {this.state.items}
+            deleteItem={this.deleteItem}
+            setUpdate={this.setUpdate}>
+          </ListItems>
       </div>
     );
   }

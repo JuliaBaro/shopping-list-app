@@ -1,35 +1,38 @@
 .list {
-    color: grey;
+    color: #083133;
     width: 250px;
-    background-color: white;
-    height: 40px;
+    background-color: #ffc07c;
+    height: 50px;
     margin: 20px auto;
     border-radius: 5px;
+    font-family: 'Courier New', Courier, monospace;
 }
 
 .list p {
-    padding: 10px;
+    padding: 14px;
     position: relative;
 }
 
-.lost p span {
+.list p span {
     position: absolute;
+    left: 10px;
     cursor: pointer;
 }
 
 .faicons {
-    margin: 0 15px;
-    /*margin: 0px 216px;*/
-    font-size: 15px;  
+    margin: 0 205px;
+    font-size: 20px;    
 }
 
 .list p input {
     background-color: transparent;
     border: 0;
-    color: black;
-    font-size:18px;
-}
+    color:#083133;
+    font-size: 20px;
+    font-weight: bold;
+} 
 
 .list p input:focus {
     outline: none;  
+    padding-left: 15px; 
 }
