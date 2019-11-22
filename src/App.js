@@ -1,5 +1,3 @@
-//https://www.youtube.com/watch?v=N8kYlimhuLw //To Do App in React (Adding, Editing and Deleting items) | Deploy in Github for freeTutorial
-
 import React, {Component} from 'react';
 import './App.css';
 import ListItems from './ListItems';
